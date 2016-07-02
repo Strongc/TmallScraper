@@ -35,7 +35,7 @@
    
 
 ## CHANGELOG
-* Version 6.2:2016-7-2
+* Version 6.2dev:2016-7-2
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
   
