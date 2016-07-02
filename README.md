@@ -1,6 +1,5 @@
 # TmallScraper
-===
-===
+====
 ## Project Document
  * Project Name: TmallScraper
  * Version: 6.2dev
@@ -10,9 +9,8 @@
  * Python version: 2.7.9 
  * Description: This is a Tmall scraper for China's Prices Project
   
----  
+
 ## Project Structure
-===
 * main.py (main function)
   * TmallPageScraper.py (a page scraper for Tmall)
     * dataCleaning.py (clean source data)
@@ -30,16 +28,13 @@
 
 
 ## requirements
-===
    * requests
    * bs4
    * gevent
    * pymongo
    
----
 
 ## CHANGELOG
-====
 * Version 6.2:2016-7-2
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
