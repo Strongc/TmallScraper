@@ -365,26 +365,22 @@ class TmallPageScraper(object):
             return None
             
         # create a client
-        client = MongoClient('123.207.118.222',27017)
-        #client = MongoClient('localhost',27017)    # local database
+        
+        client = MongoClient('localhost',27017)    # local database
 
         # create a database
         try:
-            #db = client.cppdata
             db = client.cpptest
         except AttributeError:
-            #db = client['cppdata']
             db = client['cpptest']
             
         # login in the database
-        db.authenticate('cpptest00','t00')
+        #db.authenticate('username','password')
             
         # create a collection
         try:
-            #collection = db.tmalldata
             collection = db.test
         except AttributeError:
-            #collection = db['tmalldata']
             collection = db['test']
         
         # insert data list into the collection
