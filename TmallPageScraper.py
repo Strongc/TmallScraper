@@ -18,11 +18,11 @@ __author__ = 'Guo Zhang'
 
 __contributors__ = 'Lin Chen'
 
-__last_edit_date__ = '2016-6-27'
+__last_edit_date__ = '2016-7-3'
 
 __creation_date__ = '2016-6-26'
 
-__moduleVersion__ = '1.3'
+__moduleVersion__ = '1.4'
 
 __doc__ = '''
 A page scraper for TmallScraper.
@@ -137,9 +137,12 @@ class TmallPageScraper(object):
         
         # request for the HTML
         try:
+            self.present_day = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))
+            self.present_time = str(time.strftime('%H-%M-%S',time.localtime(time.time())))
             r = requests.get(url,headers)
             return r.content
         except (requests.exceptions.ConnectionError,requests.exceptions.ReadTimeout),e:
+            self.log_time = '[{} {}]'.format(self.present_day,str(time.strftime('%H:%M:%S',time.localtime(time.time()))))
             print(self.log_time,url.encode('utf-8'),',connect error,',e)
             return None
         
@@ -174,6 +177,7 @@ class TmallPageScraper(object):
             total_page = p_ui.find('b',attrs={'class':'ui-page-s-len'}).getText().split('/')[1]
             return int(total_page)                                  
         except (AttributeError,TypeError),e:
+            self.log_time = '[{} {}]'.format(self.present_day,str(time.strftime('%H:%M:%S',time.localtime(time.time()))))
             print(self.log_time,(self.url).encode('utf-8'),'fail to get page number',e)
             return None
     
@@ -294,8 +298,6 @@ class TmallPageScraper(object):
                 data['present_day'] = self.present_day
                 data['present_time'] = self.present_time
                 data_list.append(data)
-            else:
-                print(self.log_time,self.url.encode('utf-8'),'parse error','data is None')
         
         return data_list
 
@@ -365,23 +367,22 @@ class TmallPageScraper(object):
             return None
             
         # create a client
-        
         client = MongoClient('localhost',27017)    # local database
 
         # create a database
         try:
-            db = client.cpptest
+            db = client.cppdata
         except AttributeError:
-            db = client['cpptest']
+            db = client['cppdata']
             
         # login in the database
         #db.authenticate('username','password')
             
         # create a collection
         try:
-            collection = db.test
+            collection = db.tmalldata
         except AttributeError:
-            collection = db['test']
+            collection = db['tmalldata']
         
         # insert data list into the collection
         result = collection.insert_many(data_list)
@@ -390,9 +391,10 @@ class TmallPageScraper(object):
             return True
         else:
             return None
-    
+
     def start(self):
         'start the page scraper'
+        
         self.html = self.getHTML(self.url)
         data_list = self.parseHTML(self.html)
         #indicator = self.writeCSV(data_list)
@@ -409,24 +411,14 @@ if __name__ == '__main__':
     
     begin = time.time()
     
-    #categoryName,urlParameter = u'酱油',{'cat': u'50099300'}  # u'%BD%B4%D3%CD'
-    categoryName,urlParameter = u'笔记本电脑',{'cat':'50024399'}
+    categoryName,urlParameter = u'酱油',{'cat': u'50099300'}  # u'%BD%B4%D3%CD'
+    #categoryName,urlParameter = u'笔记本电脑',{'cat':'50024399'}
 
     scraper = TmallPageScraper(categoryName,page_num = 1, **urlParameter)
     #print(scraper.url)
     indicator = scraper.start()
     print(indicator)
-    '''
-    page_num = scraper.getTotalPageNumber()
-    if page_num:
-        page_num += 1
-        for i in xrange(2, page_num):
-            scraper = TmallPageScraper(categoryName,i, **urlParameter)
-            scraper.start()
-            
-    print('finish:',categoryName.encode('utf-8'))
-    print('-'*40)
-    '''
+
     end = time.time()
     print('time:',end-begin)
     

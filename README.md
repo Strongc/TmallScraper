@@ -36,9 +36,10 @@
    
 
 ## CHANGELOG
-* Version 6.2dev:2016-7-2
+* Version 6.2dev:2016-7-3
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
+  * 修改TmallPageScraper的present_day、present_time属性的赋值
   
 * Version 6.1.1:2016-7-1
   * 调bug
