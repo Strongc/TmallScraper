@@ -44,11 +44,11 @@
 
 ## CHANGELOG
 ====
-* Version 6.2:2016-7-2
+* Version 6.2：2016-7-2
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
   
-* Version 6.1.1:2016-7-1
+* Version 6.1.1：2016-7-1
   * 调bug
   
 * Version 6.1: 2016-6-30
