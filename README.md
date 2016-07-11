@@ -3,10 +3,10 @@
 ## Project Document
 ====
  * Project Name: TmallScraper
- * Version: 6.2dev
+ * Version: 6.2
  * Author：Guo Zhang
- * Contributor: Xingjian Lin
- * Data: 2016-06-25
+ * Contributor: Xingjian Lin, Xi Huang
+ * Data: 2016-07-11
  * Python version: 2.7.9 
  * Description: This is a Tmall scraper for China's Prices Project
  
@@ -44,7 +44,7 @@
 
 ## CHANGELOG
 ====
-* Version 6.2dev:2016-7-2
+* Version 6.2:2016-7-2
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
   
