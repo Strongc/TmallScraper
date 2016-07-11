@@ -5,7 +5,6 @@ from __future__ import print_function,unicode_literals
 # modify system default encoding
 # with two statements of modifying, most of the encoding problems will be avoided
 import sys
-from pymongo.mongo_client import MongoClient
 reload(sys)
 sys.setdefaultencoding('utf-8')  
 
@@ -397,8 +396,8 @@ class TmallPageScraper(object):
         
         self.html = self.getHTML(self.url)
         data_list = self.parseHTML(self.html)
-        #indicator = self.writeCSV(data_list)
-        indicator = self.writeMongoDB(data_list)
+        indicator = self.writeCSV(data_list)
+        #indicator = self.writeMongoDB(data_list)
 
         return indicator
     
