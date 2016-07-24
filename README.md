@@ -3,10 +3,10 @@
 ## Project Document
 ====
  * Project Name: TmallScraper
- * Version: 6.2
+ * Version: 6.3
  * Author：Guo Zhang
- * Contributor: Xingjian Lin, Xi Huang
- * Data: 2016-07-11
+ * Contributor: Xingjian Lin
+ * Data: 2016-07-24
  * Python version: 2.7.9 
  * Description: This is a Tmall scraper for China's Prices Project
  
@@ -27,6 +27,13 @@
   * headers.py (user-agents and proxies for request headers) 
   * checkedProxies & proxies (IP proxies pool)
   
+* serverManager(manager scraper on the server)
+  * emailSending.py (send daily data and log with emails)
+  * tmallscraper.sh (run the scraper)
+  * tmallrar.sh (zip data)
+  * tmallemail.sh (send daily emails)
+  * crontab.md (guidance for make timing process)
+  
 * TmallTest
   * geventTest.py (test geventQueue.py)
   
@@ -44,11 +51,14 @@
 
 ## CHANGELOG
 ====
-* Version 6.2：2016-7-2
+* Version 6.3:2016-7-24
+  * 增加serverManager
+  
+* Version 6.2:2016-7-2
   * 修改geventQueue的_run方法
   * 修改TmallPageScraper的writeMongoDB方法
   
-* Version 6.1.1：2016-7-1
+* Version 6.1.1:2016-7-1
   * 调bug
   
 * Version 6.1: 2016-6-30
