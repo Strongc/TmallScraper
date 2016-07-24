@@ -51,6 +51,9 @@
 
 ## CHANGELOG
 ====
+* Version 6.3.1:2016-7-24
+  * 修改bug
+  
 * Version 6.3:2016-7-24
   * 增加serverManager
   
